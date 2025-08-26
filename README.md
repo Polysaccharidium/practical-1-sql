@@ -33,7 +33,8 @@ cd practical-1-sql
 
 3. Откройте `starter.sql` и напишите свои SQL-запросы.
 
-4. Запустите автопроверку:
 ```bash
-python test_autograde.py
+git add starter.sql
+git commit -m "Мои SQL-запросы для Практической 1"
+git push origin main
 ```
