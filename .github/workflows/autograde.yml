@@ -1,0 +1,34 @@
+name: Autograde SQL Assignment
+
+on:
+  push:
+    paths:
+      - '**/starter.sql'
+      - '.github/workflows/autograde.yml'
+  pull_request:
+    paths:
+      - '**/starter.sql'
+      - '.github/workflows/autograde.yml'
+
+jobs:
+  autograde:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Клонируем репозиторий
+      - uses: actions/checkout@v3
+
+      # 2. Устанавливаем Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # 3. Устанавливаем SQLite (обычно предустановлен в Ubuntu)
+      - name: Check SQLite
+        run: sqlite3 --version
+
+      # 4. Запускаем автотест
+      - name: Run autograde tests
+        run: |
+          python3 test_autograde.py
